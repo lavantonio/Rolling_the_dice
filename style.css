@@ -1,0 +1,126 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container{
+  padding: 30px 0 !important;
+}
+.firstText{
+  text-align: center;
+  padding: 0 0 30px 0;
+  font-size: 3.5rem;
+}
+.leftSide {
+  height: 480px;
+  width: 240px;
+  border: 1px solid #ddd;
+  margin: auto;
+  float: left;
+}
+.rightSide{
+  height: 480px;
+  width: 240px;
+  border: 1px solid #ddd;
+  margin: auto;
+  float: left;
+}
+.col-6{
+  padding: 0;
+  width: 120px;
+}
+.rowArea{
+  width: 240px;
+  margin: 0;
+  padding: 0;
+}
+.xo {
+  height: 120px;
+  width: 120px;
+  background-color: cadetblue;
+  border: 1px solid white;
+  float: left;
+  box-sizing: border-box;
+}
+.displayNone {
+  display: none !important;
+}
+#addFirstCol{
+  margin: auto 0;
+}
+#rulesGame{
+  text-align: justify;
+}
+#addFirstCol span{
+  font-weight: 600;
+  font-size: 20px;
+}
+ img{
+  height: 200px;
+  object-fit: cover;
+}
+#firstColumn, #lastColumn{
+  margin: auto 0;
+  text-align: center;
+}
+#tableLeft, #tableRight{
+  border: none;
+}
+#firstColumn p, #lastColumn p{
+  font-weight: 500;
+}
+/* * * * * * * * * * * * * * * * * addPlayer * * * * * * * * * * * * * * * * */
+.addPlayer img{
+  height: 200px;
+  object-fit: cover;
+}
+.backgroundBlack {
+  background-color: black;
+  opacity: 0.8;
+}
+/* * * * * * * * * * * * * * * * * cube * * * * * * * * * * * * * * * * */
+#oneCube{
+  height: 200px;
+  width: 200px;
+  background-color: black;
+  right: -100px;
+  bottom: 140px;
+}
+#oneCircle, #twoCircle, #threeCircle, #fourCircle, #fiveCircle, #sixCircle{
+  height: 100%;
+}
+.rounded{
+  background-color: white;
+  height: 20px;
+  width: 20px;
+}
+.twoCircle{
+  margin: 20px;
+}
+.threeCircle{
+  margin: 10px;
+}
+.firstRow{
+  margin-top: 40px;
+  margin-left: 40px;
+}
+.secondRow{
+  margin-bottom: 40px;
+  margin-left: 40px;
+}
+.firstRow .fourCircle:nth-child(2), .secondRow .fourCircle:nth-child(2){
+  margin-left: 70px;
+}
+.midleCircle .rounded{
+  margin-left: 90px;
+}
+.firstRowSix{
+  margin-top: 35px;
+}
+.lastRowSix{
+  margin-bottom: 35px;
+}
+.sixCircle{
+  margin-left: 38px;
+}

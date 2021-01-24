@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Font awesome -->
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+  <!-- Animate JS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" />
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css">
+
+  <title>Kockice</title>
+
+</head>
+<body>
+
+
+  <div class="container">
+    <h1 class="firstText">Igra bacanje kockica</h1>
+      <div class="row justify-content-center">
+        <div id="firstColumn" class="col-3 displayNone">
+          <div id="tableLeft" class="card" style="width: 12rem;">
+
+          </div>
+        </div>
+        <div id = "rightSide" class="col-3 rowArea">
+          <div class="rightSide">
+            <div class="row rowArea">
+              <div class="col-6">
+                <div class="xo"></div>
+                <div class="xo"></div>
+                <div class="xo"></div>
+                <div class="xo"></div>
+              </div>
+              <div class="col-6 position-relative">
+                <div class="xo"></div>
+                <div class="xo"></div>
+                <div class="xo"></div>
+                <div class="xo"></div>
+    <!-- - - - - - - - - - - - - - - -  cube - - - - - - - - - - - - - - - -->
+                <div id="oneCube" class="displayNone position-absolute rounded">
+                   <div id="oneCircle" class="d-flex flex-column justify-content-center align-items-center">
+                     <div class="rounded"></div>
+                   </div>
+                 <div id="twoCircle" class="displayNone d-flex flex-column justify-content-center align-items-center">
+                   <div class="rounded twoCircle"></div>
+                   <div class="rounded twoCircle"></div>
+                 </div>
+                 <div id="threeCircle" class="displayNone row justify-content-center align-items-center">
+                   <div class="rounded threeCircle"></div>
+                   <div class="rounded threeCircle"></div>
+                   <div class="rounded threeCircle"></div>
+                 </div>
+                 <div id="fourCircle" class="displayNone d-flex flex-column justify-content-between">
+                   <div class="firstRow row">
+                     <div class="rounded fourCircle"></div>
+                     <div class="rounded fourCircle"></div>
+                   </div>
+                   <div class="secondRow row">
+                     <div class="rounded fourCircle"></div>
+                     <div class="rounded fourCircle"></div>
+                   </div>
+                 </div>
+                 <div id="fiveCircle" class="displayNone d-flex flex-column justify-content-between">
+                   <div class="firstRow row">
+                     <div class="rounded fourCircle"></div>
+                     <div class="rounded fourCircle"></div>
+                   </div>
+                   <div class="midleCircle">
+                     <div class="rounded"></div>
+                   </div>
+                   <div class="secondRow row">
+                     <div class="rounded fourCircle"></div>
+                     <div class="rounded fourCircle"></div>
+                   </div>
+                 </div>
+                 <div id="sixCircle" class="displayNone d-flex flex-column justify-content-between">
+                   <div class="firstRowSix row">
+                   <div class="rounded sixCircle"></div>
+                   <div class="rounded sixCircle"></div>
+                   <div class="rounded sixCircle"></div>
+                   </div>
+                   <div class="lastRowSix row">
+                     <div class="rounded sixCircle"></div>
+                     <div class="rounded sixCircle"></div>
+                     <div class="rounded sixCircle"></div>
+                   </div>
+                 </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="addFirstCol" class="col-3  displayNone">
+          <div class="d-flex flex-column justify-content-center align-items-center">
+            <div id="htag" class="d-flex flex-column justify-content-center align-items-center">
+              <h3>Izaberite igraca</h3>
+              <button id="firstBtn" class="btn btn-danger">Kliknite</button>
+            </div>
+            <div id="rulesGame" class="displayNone">
+              <p><span>PRAVILA IGRE:</span> <br><br> Svaki igrac neizmenicno po pet puta baca kockice. Na kraju se rezultati sabiraju i ko ima vise poena taj je pobednik.</p>
+              <button id="startBtn" class="btn btn-danger">Pokrenite igru</button>
+            </div>
+          </div>
+        </div>
+        <div id="leftSide" class="col-3 rowArea">
+          <div class="leftSide">
+            <div class="row rowArea">
+              <div class="col-6">
+                <div class="xo"></div>
+                <div class="xo"></div>
+                <div class="xo"></div>
+                <div class="xo"></div>
+              </div>
+              <div class="col-6">
+                <div class="xo"></div>
+                <div class="xo"></div>
+                <div class="xo"></div>
+                <div class="xo"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="lastColumn" class="col-3 displayNone">
+          <div id="tableRight" class="card" style="width: 12rem;">
+
+          </div>
+        </div>
+         <!-- - - - - - - - - - - - - - - -  addPlayer - - - - - - - - - - - - - - - -->
+        <div id="addPlayer" class="addPlayer text-center displayNone">
+          <h1 id="textPlayer1"class="pb-3">Izaberite igraca broj 1.</h1>
+          <h1 id="textPlayer2" class="displayNone pb-3">Izaberite igraca broj 2.</h1>
+          <div class="row justify-content-center">
+            <div id="ivo" class="card" style="width: 18rem;">
+              <img src="img/ivo.jpg" class="card-img-top" alt="Ivo">
+              <div class="card-body">
+                <h5 class="card-title">Ivo</h5>
+                <p class="card-text">Najbrze ruke Beograda. Ako mene izaberete necete se pokajati. Gledajte me u oci</p>
+                <button id="ivoBtn" class="btn btn-primary">Izaberite Ivu</button>
+              </div>
+            </div>
+            <div id="vladanka" class="card" style="width: 18rem;">
+              <img src="img/vladanka.jpg" class="card-img-top" alt="Vladanka">
+              <div class="card-body">
+                <h5 class="card-title">Vladanka</h5>
+                <p class="card-text">Najbrze ruke Krusevice. Mogu da oberem malinjak za 2 sata, jer sam u takvoj mogucnosti.</p>
+                <button id="vladankaBtn" class="btn btn-warning">Izaberite Vladanku</button>
+              </div>
+            </div>
+            <div id="jorge" class="card" style="width: 18rem;">
+              <img src="img/jorge.jpg" class="card-img-top" alt="Jorge">
+              <div class="card-body">
+                <h5 class="card-title">Jorge</h5>
+                <p class="card-text">Najbrze ruke Bolivie. Posle 30 godina igranja nisam najbrzi ali sam najbolji.</p>
+                <button id="jorgeBtn" class="btn btn-success">Izaberite Jorge-a</button>
+              </div>
+            </div>
+            <div id="justina" class="card" style="width: 18rem;">
+              <img src="img/justina.jpg" class="card-img-top" alt="Justina">
+              <div class="card-body">
+                <h5 class="card-title">Justina</h5>
+                <p class="card-text">Najbrze ruke Nemacke. Kunem se u Angelu Merkel. Nemacka medicina je najaca.</p>
+                <button id="justinaBtn" class="btn btn-secondary">Izaberite Justinu</button>
+              </div>
+            </div>
+          </div>
+          <div class="row justify-content-center">
+            <div id="lav" class="card" style="width: 18rem;">
+              <img src="img/lav.jpg" class="card-img-top" alt="Lav">
+              <div class="card-body">
+                <h5 class="card-title">Lav</h5>
+                <p class="card-text">Najbrze ruke Jagodine. <br> Veni, vidi vici tako nekako ide.</p>
+                <button id="lavBtn" class="btn btn-info">Izaberite Lava</button>
+              </div>
+            </div>
+            <div id="kristina" class="card" style="width: 18rem;">
+              <img src="img/kristina.jpg" class="card-img-top" alt="Kristina">
+              <div class="card-body">
+                <h5 class="card-title">Kristina</h5>
+                <p class="card-text">Najbrze ruke Panceva. Leptiricu sarenicu dodji meni amo...</p>
+                <button id="kristinaBtn" class="btn btn-danger">Izaberite Kristinu</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+  </div>
+
+
+
+
+
+
+
+<script src="main.js" charset="utf-8"></script>
+
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+</body>
+</html>
