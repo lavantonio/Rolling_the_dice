@@ -51,13 +51,9 @@
 #rulesGame{
   text-align: justify;
 }
-#startBtn{
-  margin: auto 71px;
-}
 #addFirstCol span{
   font-weight: 600;
   font-size: 20px;
-  margin: auto 56px;
 }
  img{
   height: 150px;
@@ -91,13 +87,11 @@
 #firstPlayerBtn, #secondPlayerBtn{
   margin-top: 10px;
 }
-#endGame .align-justify{
+#endGames .align-justify{
   text-align: justify;
 }
-#endGame img{
-  height: 200px;
-  width: 300px;
-  margin: 50px
+#endGames img{
+  height: 250px;
 }
 /* * * * * * * * * * * * * * * * * addPlayer * * * * * * * * * * * * * * * * */
 .addPlayer img{

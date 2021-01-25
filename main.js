@@ -39,7 +39,7 @@ var twoRoundR = document.querySelector('#twoRoundR');
 var threeRoundR = document.querySelector('#threeRoundR');
 var fourRoundR = document.querySelector('#fourRoundR');
 var fiveRoundR = document.querySelector('#fiveRoundR');
-
+var endGames = document.querySelector('#endGames');
 
 var firstPlayerBtn;
 var secondPlayerBtn;
@@ -202,7 +202,7 @@ function afterStartGame(){
 function showPlayers(){
   firstColumn.classList.remove('displayNone');
   lastColumn.classList.remove('displayNone');
-  addFirstCol.className = 'displayNone col-3';
+  addFirstCol.className = 'displayNone col-4';
 
   createTablePlayer();
 
@@ -216,6 +216,7 @@ function displayDice(){
 }
 
 function rollDiceFirstPlayer(){
+  firstPlayerBtn.classList.add('displayNone');
   var timer = setTimeout(function myTimer() {
     var rand = Math.floor(Math.random()*6);
     cubeChange();
@@ -304,6 +305,7 @@ function cubeChange(){
     }
 
 function rollDiceSecondPlayer(){
+  secondPlayerBtn.classList.add('displayNone');
   var timer = setTimeout(function myTimer() {
     var rand = Math.floor(Math.random()*6);
     cubeChange();
@@ -335,4 +337,45 @@ function endGame(){
   addFirstCol.classList.remove('displayNone');
   htag.classList.add('displayNone');
   rulesGame.classList.add('displayNone');
+
+  readHtml();
+}
+
+
+function readHtml(){
+  var players = ["Ivo", "Lav", "Kristina", "Justina", "Vladanka", "Jorge"]
+  var text = '';
+  console.log(counterPlayerOne);
+  endGames.classList.remove('displayNone');
+  if (playerOne == "Ivo"|| playerOne == "Lav" || playerOne == "Jorge") {
+    var textWoManPlayerOne = "o";
+  }else{
+    var textWoManPlayerOne = "la"
+  }
+  if (playerTwo == "Ivo" || playerTwo == "Lav" || playerTwo == "Jorge") {
+    var textWoManPlayerTwo = "o";
+  }else{
+    var textWoManPlayerTwo = "la"
+  }
+  if (counterPlayerTwo > counterPlayerOne) {
+    text += '<div class="d-flex flex-column justify-content-center text-center">';
+    text += '<img src="img/'+playerTwo+'.jpg" alt="'+playerTwo+'">';
+    text += '<h4>***    '+playerTwo+' je pobedi'+textWoManPlayerTwo+'    ***</h4>';
+    text += '<p class="align-justify">Osvoji'+textWoManPlayerTwo+' je ukupno '+counterPlayerTwo+' poena a protivnik je osvojio '+counterPlayerOne+' poena.</p>';
+    text += '</div>'
+  }else if(counterPlayerOne == counterPlayerTwo){
+    text += '<div class="d-flex flex-column justify-content-center text-center">';
+    text += '<img src="img/ida.jpg" alt="ida.jpg">';
+    text += '<h4>***    NERESENO JE    ***</h4>';
+    text += '<p class="align-center">Odigrajte ponovo partiju</p>';
+    text += '</div>';
+  }else {
+    text += '<div class="d-flex flex-column justify-content-center text-center">';
+    text += '<img src="img/'+playerOne+'.jpg" alt="'+playerOne+'">';
+    text += '<h4>***    '+playerOne+' je pobedi'+textWoManPlayerOne+'    ***</h4>';
+    text += '<p class="align-justify">Osvoji'+textWoManPlayerOne+' je ukupno '+counterPlayerOne+' poena a protivnik je osvojio '+counterPlayerTwo+' poena.</p>';
+    text += '</div>'
+  }
+
+  endGames.innerHTML = text;
 }
