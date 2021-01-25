@@ -3,7 +3,6 @@
   padding: 0;
   box-sizing: border-box;
 }
-
 .container{
   padding: 30px 0 !important;
 }
@@ -52,12 +51,16 @@
 #rulesGame{
   text-align: justify;
 }
+#startBtn{
+  margin: auto 71px;
+}
 #addFirstCol span{
   font-weight: 600;
   font-size: 20px;
+  margin: auto 56px;
 }
  img{
-  height: 200px;
+  height: 150px;
   object-fit: cover;
 }
 #firstColumn, #lastColumn{
@@ -69,6 +72,32 @@
 }
 #firstColumn p, #lastColumn p{
   font-weight: 500;
+  font-size: 22px;
+  margin-bottom: 0px !important;
+}
+#firstColumn .lead, #lastColumn .lead{
+  margin-bottom: 0px !important;
+}
+#tableLeft, #tableRight{
+  height: 355px;
+  margin: auto;
+}
+#tableLeft .card-body, #tableRight .card-body {
+    padding: 1rem 0rem;
+}
+#firstColumn .card-body, #lastColumn .card-body{
+  height: 193px;
+}
+#firstPlayerBtn, #secondPlayerBtn{
+  margin-top: 10px;
+}
+#endGame .align-justify{
+  text-align: justify;
+}
+#endGame img{
+  height: 200px;
+  width: 300px;
+  margin: 50px
 }
 /* * * * * * * * * * * * * * * * * addPlayer * * * * * * * * * * * * * * * * */
 .addPlayer img{
@@ -78,6 +107,9 @@
 .backgroundBlack {
   background-color: black;
   opacity: 0.8;
+}
+.addPlayer .card{
+  padding-top: 12px;
 }
 /* * * * * * * * * * * * * * * * * cube * * * * * * * * * * * * * * * * */
 #oneCube{
@@ -123,4 +155,7 @@
 }
 .sixCircle{
   margin-left: 38px;
+}
+.list-group-item{
+  padding: 0 !important;
 }

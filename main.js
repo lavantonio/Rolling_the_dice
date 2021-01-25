@@ -29,6 +29,16 @@ var tableLeft = document.querySelector('#tableLeft');
 var tableRight = document.querySelector('#tableRight');
 var scorePlayerOne = document.querySelector('#scorePlayerOne');
 var scorePlayerTwo = document.querySelector('#scorePlayerTwo');
+var oneRoundL = document.querySelector('#oneRoundL');
+var twoRoundL = document.querySelector('#twoRoundL');
+var threeRoundL = document.querySelector('#threeRoundL');
+var fourRoundL = document.querySelector('#fourRoundL');
+var fiveRoundL = document.querySelector('#fiveRoundL');
+var oneRoundR = document.querySelector('#oneRoundR');
+var twoRoundR = document.querySelector('#twoRoundR');
+var threeRoundR = document.querySelector('#threeRoundR');
+var fourRoundR = document.querySelector('#fourRoundR');
+var fiveRoundR = document.querySelector('#fiveRoundR');
 
 
 var firstPlayerBtn;
@@ -43,22 +53,20 @@ var noneDisplay = ' ';
 var counter = 0;
 var counterPlayerOne = 0;
 var counterPlayerTwo = 0;
-var counterTimeCube = 700;
+var counterTimeCube = 800;
 var counterCube = 0;
 var countRound = 0;
 var countPlayerDisplayNone = 0;
 
 var cubesDisplay = [oneCircle, twoCircle, threeCircle, fourCircle, fiveCircle, sixCircle];
+var roundTableL = ["null", oneRoundL, twoRoundL, threeRoundL, fourRoundL, fiveRoundL];
+var roundTableR = ["null", oneRoundR, twoRoundR, threeRoundR, fourRoundR, fiveRoundR];
 
 setTimeout(function (){
 firstText.className = 'displayNone';
-},2000)
-
-setTimeout(function (){
 addFirstCol.classList.remove('displayNone');
-},2000)
-
 firstBtn.addEventListener('click',choosePlayer);
+},2000)
 
 function choosePlayer(){
   rightSide.className = 'displayNone col-3 rowArea';
@@ -76,7 +84,7 @@ function choosePlayer(){
 function choosePlayerIvo(){
   textPlayer1.className = 'displayNone';
   textPlayer2.classList.remove('displayNone');
-  ivo.className = 'backgroundBlack';
+  ivo.className = 'backgroundBlack card';
   ivoBtn.className = 'displayNone';
   if (counter == 0) {
     playerOne = "Ivo";
@@ -91,7 +99,7 @@ function choosePlayerIvo(){
 function choosePlayerLav(){
   textPlayer1.className = 'displayNone';
   textPlayer2.classList.remove('displayNone');
-  lav.className = 'backgroundBlack';
+  lav.className = 'backgroundBlack card';
   lavBtn.className = 'displayNone';
   if (counter == 0) {
     playerOne = "Lav";
@@ -106,7 +114,7 @@ function choosePlayerLav(){
 function choosePlayerKristina(){
   textPlayer1.className = 'displayNone';
   textPlayer2.classList.remove('displayNone');
-  kristina.className = 'backgroundBlack';
+  kristina.className = 'backgroundBlack card';
   kristinaBtn.className = 'displayNone';
   if (counter == 0) {
     playerOne = "Kristina";
@@ -121,7 +129,7 @@ function choosePlayerKristina(){
 function choosePlayerJorge(){
   textPlayer1.className = 'displayNone';
   textPlayer2.classList.remove('displayNone');
-  jorge.className = 'backgroundBlack';
+  jorge.className = 'backgroundBlack card';
   jorgeBtn.className = 'displayNone';
   if (counter == 0) {
     playerOne = "Jorge";
@@ -136,7 +144,7 @@ function choosePlayerJorge(){
 function choosePlayerVladanka(){
   textPlayer1.className = 'displayNone';
   textPlayer2.classList.remove('displayNone');
-  vladanka.className = 'backgroundBlack';
+  vladanka.className = 'backgroundBlack card';
   vladankaBtn.className = 'displayNone';
   if (counter == 0) {
     playerOne = "Vladanka";
@@ -151,7 +159,7 @@ function choosePlayerVladanka(){
 function choosePlayerJustina(){
   textPlayer1.className = 'displayNone';
   textPlayer2.classList.remove('displayNone');
-  justina.className = 'backgroundBlack';
+  justina.className = 'backgroundBlack card';
   justinaBtn.className = 'displayNone';
   if (counter == 0) {
     playerOne = "Justina";
@@ -194,68 +202,64 @@ function afterStartGame(){
 function showPlayers(){
   firstColumn.classList.remove('displayNone');
   lastColumn.classList.remove('displayNone');
-  addFirstCol.className = 'displayNone';
+  addFirstCol.className = 'displayNone col-3';
 
   createTablePlayer();
 
-  countRounds = document.querySelector('#countRounds');
-  firstPlayerBtn = document.querySelector('#firstPlayerBtn');
-  secondPlayerBtn = document.querySelector('#secondPlayerBtn');
-  scorePlayerOne = document.querySelector('#scorePlayerOne');
-  scorePlayerTwo = document.querySelector('#scorePlayerTwo');
-  secondPlayerBtn.classList = 'displayNone btn btn-primary';
 
-
-  firstPlayerBtn.addEventListener('click',rollDice);
+  firstPlayerBtn.addEventListener('click',displayDice);
   }
 
-  function rollDice(){
-    firstPlayerBtn.className = 'displayNone btn btn-primary';
-    oneCube.classList.remove('displayNone');
+function displayDice(){
+  oneCube.classList.remove('displayNone');
+  rollDiceFirstPlayer();
+}
 
-    var timer = setTimeout(function myTimer() {
-      var rand = Math.floor(Math.random()*6);
-      cubeChange();
-      timer = setTimeout(myTimer, counterTimeCube);
-      if (counterTimeCube == 1000){
-        for (var i = 0; i < cubesDisplay.length; i++) {
-          cubesDisplay[i].classList.add('displayNone');
-        }
-        countRound++;
-        cubesDisplay[rand].classList.remove('displayNone');
-        rand = rand + 1;
-        counterPlayerOne = counterPlayerOne + rand;
-        createTablePlayer();
-        firstPlayerBtn.classList.add('displayNone');
-        clearTimeout(timer);
+function rollDiceFirstPlayer(){
+  var timer = setTimeout(function myTimer() {
+    var rand = Math.floor(Math.random()*6);
+    cubeChange();
+    timer = setTimeout(myTimer, counterTimeCube);
+    if (counterTimeCube == 1000){
+      for (var i = 0; i < cubesDisplay.length; i++) {
+        cubesDisplay[i].classList.add('displayNone');
+      }
+      counterTimeCube = 800;
+      counterCube = 0;
+      countRound++;
+      cubesDisplay[rand].classList.remove('displayNone');
+      rand = rand + 1;
+      roundTableL[countRound].innerHTML = "Runda "+countRound+":  Poena "+rand;
+      counterPlayerOne = counterPlayerOne + rand;
+      createTablePlayer();
+      secondPlayerBtn.addEventListener('click',rollDiceSecondPlayer);
+      clearTimeout(timer);
     }
   }, 400);
+}
 
-    function cubeChange(){
-      var rand = Math.floor(Math.random()*6);
-      if (counterCube < 4) {
-        counterCube++;
-        for (var i = 0; i < cubesDisplay.length; i++) {
-          cubesDisplay[i].classList.add('displayNone');
-        }
-        cubesDisplay[rand].classList.remove('displayNone');
-      }else{
-        counterTimeCube = counterTimeCube + 100;
-        for (var i = 0; i < cubesDisplay.length; i++) {
-          cubesDisplay[i].classList.add('displayNone');
-        }
-        cubesDisplay[rand].classList.remove('displayNone');
-      }
+function cubeChange(){
+  var rand = Math.floor(Math.random()*6);
+  if (counterCube < 3) {
+    counterCube++;
+    for (var i = 0; i < cubesDisplay.length; i++) {
+      cubesDisplay[i].classList.add('displayNone');
     }
+    cubesDisplay[rand].classList.remove('displayNone');
+  }else{
+    counterTimeCube = counterTimeCube + 100;
+    for (var i = 0; i < cubesDisplay.length; i++) {
+      cubesDisplay[i].classList.add('displayNone');
+    }
+    cubesDisplay[rand].classList.remove('displayNone');
   }
-
+}
 
   function createTablePlayer(){
     var players = ["Ivo", "Lav", "Kristina", "Justina", "Vladanka", "Jorge"]
     var textPlay1 = '';
     var textPlay2 = '';
     countPlayerDisplayNone++;
-    console.log(countPlayerDisplayNone);
     num = 2;
     if (countPlayerDisplayNone % num) {
       nonePlayer1Display = " "
@@ -276,8 +280,8 @@ function showPlayers(){
         textPlay1 +='<img src="img/'+players[i]+'.jpg" class="card-img-top" alt="'+players[i]+'">';
         textPlay1 +='<div class="card-body">';
         textPlay1 +='<p id="scorePlayerOne"class="lead">Ukupno poena : '+counterPlayerOne+'</p>';
+        textPlay1 +='<p id = "countRounds" class = "'+noneDisplay+' pt-1">Runda '+countRound+'</p>';
         textPlay1 +='<button id="firstPlayerBtn" class="'+nonePlayer1Display+' btn btn-primary">baci kockicu</button>';
-        textPlay1 +='<p id = "countRounds" class = "'+noneDisplay+' pt-4">Runda '+countRound+'</p>';
         textPlay1 +='</div>';
         }
       if (players[i] == playerTwo) {
@@ -285,11 +289,50 @@ function showPlayers(){
         textPlay2 +='<img src="img/'+players[i]+'.jpg" class="card-img-top" alt="'+players[i]+'">';
         textPlay2 +='<div class="card-body">';
         textPlay2 +='<p id="scorePlayerTwo" class="lead">Ukupno poena : '+counterPlayerTwo+'</p>';
+        textPlay2 +='<p class = "'+noneDisplay+' pt-1">Runda '+countRound+'</p>';
         textPlay2 +='<button id="secondPlayerBtn" class="'+nonePlayer2Display+' btn btn-primary">baci kockicu</button>';
-        textPlay2 +='<p class = "'+noneDisplay+' pt-4">Runda '+countRound+'</p>';
         textPlay2 +='</div>';
       }
       }
     tableLeft.innerHTML = textPlay1;
     tableRight.innerHTML = textPlay2;
+    countRounds = document.querySelector('#countRounds');
+    firstPlayerBtn = document.querySelector('#firstPlayerBtn');
+    secondPlayerBtn = document.querySelector('#secondPlayerBtn');
+    scorePlayerOne = document.querySelector('#scorePlayerOne');
+    scorePlayerTwo = document.querySelector('#scorePlayerTwo');
     }
+
+function rollDiceSecondPlayer(){
+  var timer = setTimeout(function myTimer() {
+    var rand = Math.floor(Math.random()*6);
+    cubeChange();
+    timer = setTimeout(myTimer, counterTimeCube);
+    if (counterTimeCube == 1000){
+      for (var i = 0; i < cubesDisplay.length; i++) {
+        cubesDisplay[i].classList.add('displayNone');
+      }
+      counterTimeCube = 800;
+      counterCube = 0;
+      cubesDisplay[rand].classList.remove('displayNone');
+      rand = rand + 1;
+      roundTableR[countRound].innerHTML = "Runda "+countRound+":  Poena "+rand;
+      counterPlayerTwo = counterPlayerTwo + rand;
+      createTablePlayer();
+      if (countRound == 1) {
+        endGame();
+      }
+      firstPlayerBtn.addEventListener('click',rollDiceFirstPlayer);
+      clearTimeout(timer);
+    }
+  }, 400);
+}
+
+function endGame(){
+  firstColumn.classList.add('displayNone');
+  lastColumn.classList.add('displayNone');
+  oneCube.classList.add('displayNone');
+  addFirstCol.classList.remove('displayNone');
+  htag.classList.add('displayNone');
+  rulesGame.classList.add('displayNone');
+}
