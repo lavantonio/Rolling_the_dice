@@ -40,15 +40,15 @@ var threeRoundR = document.querySelector('#threeRoundR');
 var fourRoundR = document.querySelector('#fourRoundR');
 var fiveRoundR = document.querySelector('#fiveRoundR');
 var endGames = document.querySelector('#endGames');
+var restartButton = document.querySelector('#restartButton');
 
 var firstPlayerBtn;
 var secondPlayerBtn;
-var playerOne;
-var playerTwo;
 var scorePlayerOne;
 var scorePlayerTwo;
 var countRounds;
 var noneDisplay = ' ';
+var restartButton;
 
 var counter = 0;
 var counterPlayerOne = 0;
@@ -57,124 +57,74 @@ var counterTimeCube = 800;
 var counterCube = 0;
 var countRound = 0;
 var countPlayerDisplayNone = 0;
+var playerOne = " ";
+var playerTwo = " ";
 
 var cubesDisplay = [oneCircle, twoCircle, threeCircle, fourCircle, fiveCircle, sixCircle];
 var roundTableL = ["null", oneRoundL, twoRoundL, threeRoundL, fourRoundL, fiveRoundL];
 var roundTableR = ["null", oneRoundR, twoRoundR, threeRoundR, fourRoundR, fiveRoundR];
 
-setTimeout(function (){
-firstText.className = 'displayNone';
-addFirstCol.classList.remove('displayNone');
-firstBtn.addEventListener('click',choosePlayer);
-},2000)
+startGame();
+
+function startGame(){
+  setTimeout(function (){
+  firstText.classList.add('displayNone');
+  addFirstCol.classList.remove('displayNone');
+  firstBtn.addEventListener('click',choosePlayer);
+  },2000)
+}
 
 function choosePlayer(){
-  rightSide.className = 'displayNone col-3 rowArea';
-  leftSide.className = 'displayNone col-3 rowArea';
-  addFirstCol.className = 'displayNone col-3';
+  rightSide.classList.add('displayNone');
+  leftSide.classList.add('displayNone');
+  addFirstCol.classList.add('displayNone');
   addPlayer.classList.remove('displayNone');
-  ivoBtn.addEventListener('click',choosePlayerIvo);
-  lavBtn.addEventListener('click',choosePlayerLav);
-  justinaBtn.addEventListener('click',choosePlayerJustina);
-  kristinaBtn.addEventListener('click',choosePlayerKristina);
-  jorgeBtn.addEventListener('click',choosePlayerJorge);
-  vladankaBtn.addEventListener('click',choosePlayerVladanka);
+  ivoBtn.addEventListener('click',addPlayerOne);
+  lavBtn.addEventListener('click',addPlayerOne);
+  justinaBtn.addEventListener('click',addPlayerOne);
+  kristinaBtn.addEventListener('click',addPlayerOne);
+  jorgeBtn.addEventListener('click',addPlayerOne);
+  vladankaBtn.addEventListener('click',addPlayerOne);
 }
 
-function choosePlayerIvo(){
-  textPlayer1.className = 'displayNone';
+function addPlayerOne(){
+  textPlayer1.classList.add('displayNone');
   textPlayer2.classList.remove('displayNone');
-  ivo.className = 'backgroundBlack card';
-  ivoBtn.className = 'displayNone';
   if (counter == 0) {
-    playerOne = "Ivo";
-    counter = 1;
+    if (this == ivoBtn) {
+      cardBackground = ivo;
+      playerOne = "Ivo";
+    }else if (this == lavBtn){
+      playerOne = "Lav";
+      cardBackground = lav;
+    }else if (this == kristinaBtn){
+      playerOne = "Kristina";
+      cardBackground = kristina;
+    }else if (this == vladankaBtn){
+      playerOne = "Vladanka";
+      cardBackground = vladanka;
+    }else if (this == justinaBtn){
+      playerOne = "Justina";
+      cardBackground = justina;
+    }else if(this == jorgeBtn){
+      playerOne = "Jorge";
+      cardBackground = jorge;
+    }
+    cardBackground.classList.add('backgroundBlack');
+    this.classList.add('displayNone');
+    counter++;
+      console.log(playerOne);
   }
   lavBtn.addEventListener('click',addPlayerTwo);
   kristinaBtn.addEventListener('click',addPlayerTwo);
   jorgeBtn.addEventListener('click',addPlayerTwo);
   vladankaBtn.addEventListener('click',addPlayerTwo);
   justinaBtn.addEventListener('click',addPlayerTwo);
-}
-function choosePlayerLav(){
-  textPlayer1.className = 'displayNone';
-  textPlayer2.classList.remove('displayNone');
-  lav.className = 'backgroundBlack card';
-  lavBtn.className = 'displayNone';
-  if (counter == 0) {
-    playerOne = "Lav";
-    counter = 1;
-  }
-  ivoBtn.addEventListener('click',addPlayerTwo);
-  kristinaBtn.addEventListener('click',addPlayerTwo);
-  jorgeBtn.addEventListener('click',addPlayerTwo);
-  vladankaBtn.addEventListener('click',addPlayerTwo);
-  justinaBtn.addEventListener('click',addPlayerTwo);
-}
-function choosePlayerKristina(){
-  textPlayer1.className = 'displayNone';
-  textPlayer2.classList.remove('displayNone');
-  kristina.className = 'backgroundBlack card';
-  kristinaBtn.className = 'displayNone';
-  if (counter == 0) {
-    playerOne = "Kristina";
-    counter = 1;
-  }
-  lavBtn.addEventListener('click',addPlayerTwo);
-  ivoBtn.addEventListener('click',addPlayerTwo);
-  jorgeBtn.addEventListener('click',addPlayerTwo);
-  vladankaBtn.addEventListener('click',addPlayerTwo);
-  justinaBtn.addEventListener('click',addPlayerTwo);
-}
-function choosePlayerJorge(){
-  textPlayer1.className = 'displayNone';
-  textPlayer2.classList.remove('displayNone');
-  jorge.className = 'backgroundBlack card';
-  jorgeBtn.className = 'displayNone';
-  if (counter == 0) {
-    playerOne = "Jorge";
-    counter = 1;
-  }
-  lavBtn.addEventListener('click',addPlayerTwo);
-  kristinaBtn.addEventListener('click',addPlayerTwo);
-  ivoBtn.addEventListener('click',addPlayerTwo);
-  vladankaBtn.addEventListener('click',addPlayerTwo);
-  justinaBtn.addEventListener('click',addPlayerTwo);
-}
-function choosePlayerVladanka(){
-  textPlayer1.className = 'displayNone';
-  textPlayer2.classList.remove('displayNone');
-  vladanka.className = 'backgroundBlack card';
-  vladankaBtn.className = 'displayNone';
-  if (counter == 0) {
-    playerOne = "Vladanka";
-    counter = 1;
-  }
-  lavBtn.addEventListener('click',addPlayerTwo);
-  kristinaBtn.addEventListener('click',addPlayerTwo);
-  jorgeBtn.addEventListener('click',addPlayerTwo);
-  ivoBtn.addEventListener('click',addPlayerTwo);
-  justinaBtn.addEventListener('click',addPlayerTwo);
-}
-function choosePlayerJustina(){
-  textPlayer1.className = 'displayNone';
-  textPlayer2.classList.remove('displayNone');
-  justina.className = 'backgroundBlack card';
-  justinaBtn.className = 'displayNone';
-  if (counter == 0) {
-    playerOne = "Justina";
-    counter = 1;
-  }
-  lavBtn.addEventListener('click',addPlayerTwo);
-  kristinaBtn.addEventListener('click',addPlayerTwo);
-  jorgeBtn.addEventListener('click',addPlayerTwo);
-  vladankaBtn.addEventListener('click',addPlayerTwo);
   ivoBtn.addEventListener('click',addPlayerTwo);
 }
 
 function addPlayerTwo(){
   if (this.id == "kristinaBtn") {
-    playerTwo = "Kristina";
   } else if (this.id == "lavBtn") {
     playerTwo = "Lav";
   }else if (this.id == "ivoBtn") {
@@ -183,10 +133,11 @@ function addPlayerTwo(){
     playerTwo = "Justina";
   }else if (this.id == "vladankaBtn") {
     playerTwo = "Vladanka";
-  }else if(this.id == "jorgeBtn"){
+  }else{
     playerTwo = "Jorge";
   }
-  addPlayer.className = 'displayNone';
+  addPlayer.classList.add('displayNone');
+
   afterStartGame();
 }
 
@@ -195,7 +146,7 @@ function afterStartGame(){
   leftSide.classList.remove('displayNone');
   addFirstCol.classList.remove('displayNone');
   rulesGame.classList.remove('displayNone');
-  htag.className = 'displayNone';
+  htag.classList.add('displayNone');
   startBtn.addEventListener('click',showPlayers)
 }
 
@@ -203,10 +154,7 @@ function showPlayers(){
   firstColumn.classList.remove('displayNone');
   lastColumn.classList.remove('displayNone');
   addFirstCol.className = 'displayNone col-4';
-
   createTablePlayer();
-
-
   firstPlayerBtn.addEventListener('click',displayDice);
   }
 
@@ -345,7 +293,6 @@ function endGame(){
 function readHtml(){
   var players = ["Ivo", "Lav", "Kristina", "Justina", "Vladanka", "Jorge"]
   var text = '';
-  console.log(counterPlayerOne);
   endGames.classList.remove('displayNone');
   if (playerOne == "Ivo"|| playerOne == "Lav" || playerOne == "Jorge") {
     var textWoManPlayerOne = "o";
@@ -362,20 +309,30 @@ function readHtml(){
     text += '<img src="img/'+playerTwo+'.jpg" alt="'+playerTwo+'">';
     text += '<h4>***    '+playerTwo+' je pobedi'+textWoManPlayerTwo+'    ***</h4>';
     text += '<p class="align-justify">Osvoji'+textWoManPlayerTwo+' je ukupno '+counterPlayerTwo+' poena a protivnik je osvojio '+counterPlayerOne+' poena.</p>';
+    text +='<button id="restartButton" class="btn btn-danger">Pokreni ponovo igru</button>';
     text += '</div>'
   }else if(counterPlayerOne == counterPlayerTwo){
     text += '<div class="d-flex flex-column justify-content-center text-center">';
     text += '<img src="img/ida.jpg" alt="ida.jpg">';
     text += '<h4>***    NERESENO JE    ***</h4>';
     text += '<p class="align-center">Odigrajte ponovo partiju</p>';
+    text +='<button id="restartButton" class="btn btn-danger">Pokreni ponovo igru</button>';
     text += '</div>';
   }else {
     text += '<div class="d-flex flex-column justify-content-center text-center">';
     text += '<img src="img/'+playerOne+'.jpg" alt="'+playerOne+'">';
     text += '<h4>***    '+playerOne+' je pobedi'+textWoManPlayerOne+'    ***</h4>';
     text += '<p class="align-justify">Osvoji'+textWoManPlayerOne+' je ukupno '+counterPlayerOne+' poena a protivnik je osvojio '+counterPlayerTwo+' poena.</p>';
+    text +='<button id="restartButton" class="btn btn-danger">Pokreni ponovo igru</button>';
     text += '</div>'
   }
 
   endGames.innerHTML = text;
+  restartButton = document.querySelector('#restartButton');
+  restartButton.addEventListener('click',restartGame);
+}
+
+function restartGame(){
+  location.reload();
+  startGame();
 }
