@@ -164,6 +164,7 @@ function displayDice(){
 }
 
 function rollDiceFirstPlayer(){
+  oneCube.classList.remove('borderCube');
   firstPlayerBtn.classList.add('displayNone');
   var timer = setTimeout(function myTimer() {
     var rand = Math.floor(Math.random()*6);
@@ -176,6 +177,7 @@ function rollDiceFirstPlayer(){
       counterTimeCube = 800;
       counterCube = 0;
       countRound++;
+      oneCube.classList.add('borderCube');
       cubesDisplay[rand].classList.remove('displayNone');
       rand = rand + 1;
       roundTableL[countRound].innerHTML = "Runda "+countRound+":  Poena "+rand;
@@ -253,6 +255,7 @@ function cubeChange(){
     }
 
 function rollDiceSecondPlayer(){
+  oneCube.classList.remove('borderCube');
   secondPlayerBtn.classList.add('displayNone');
   var timer = setTimeout(function myTimer() {
     var rand = Math.floor(Math.random()*6);
@@ -268,9 +271,12 @@ function rollDiceSecondPlayer(){
       rand = rand + 1;
       roundTableR[countRound].innerHTML = "Runda "+countRound+":  Poena "+rand;
       counterPlayerTwo = counterPlayerTwo + rand;
+      oneCube.classList.add('borderCube');
       createTablePlayer();
-      if (countRound == 1) {
-        endGame();
+      if (countRound == 2) {
+        var temeEnd = setTimeout(function(){
+          endGame();
+        }, 2000);
       }
       firstPlayerBtn.addEventListener('click',rollDiceFirstPlayer);
       clearTimeout(timer);
