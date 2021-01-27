@@ -147,8 +147,16 @@ function afterStartGame(){
   addFirstCol.classList.remove('displayNone');
   rulesGame.classList.remove('displayNone');
   htag.classList.add('displayNone');
-  startBtn.addEventListener('click',showPlayers)
+  startBtn.addEventListener('click',chooseRounds)
 }
+
+function chooseRounds(){
+  rulesGame.classList.add('displayNone');
+  chooseRound.classList.remove('displayNone');
+}
+
+
+
 
 function showPlayers(){
   firstColumn.classList.remove('displayNone');
