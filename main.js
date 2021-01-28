@@ -41,6 +41,11 @@ var fourRoundR = document.querySelector('#fourRoundR');
 var fiveRoundR = document.querySelector('#fiveRoundR');
 var endGames = document.querySelector('#endGames');
 var restartButton = document.querySelector('#restartButton');
+var userRounds = document.querySelector('input[type="text"]');
+var submitBtn = document.querySelector('#submitBtn');
+var textRound = document.querySelector('#textRound');
+var listL = document.querySelector('#listL');
+var listR = document.querySelector('#listR');
 
 var firstPlayerBtn;
 var secondPlayerBtn;
@@ -49,6 +54,17 @@ var scorePlayerTwo;
 var countRounds;
 var noneDisplay = ' ';
 var restartButton;
+var userRoundsVal;
+var oneRoundL;
+var twoRoundL;
+var threeRoundL;
+var fourRoundL;
+var fiveRoundL;
+var oneRoundR;
+var twoRoundR;
+var threeRoundR;
+var fourRoundR;
+var fiveRoundR;
 
 var counter = 0;
 var counterPlayerOne = 0;
@@ -61,8 +77,8 @@ var playerOne = " ";
 var playerTwo = " ";
 
 var cubesDisplay = [oneCircle, twoCircle, threeCircle, fourCircle, fiveCircle, sixCircle];
-var roundTableL = ["null", oneRoundL, twoRoundL, threeRoundL, fourRoundL, fiveRoundL];
-var roundTableR = ["null", oneRoundR, twoRoundR, threeRoundR, fourRoundR, fiveRoundR];
+var roundTableL = [];
+var roundTableR = [];
 
 startGame();
 
@@ -113,7 +129,6 @@ function addPlayerOne(){
     cardBackground.classList.add('backgroundBlack');
     this.classList.add('displayNone');
     counter++;
-      console.log(playerOne);
   }
   lavBtn.addEventListener('click',addPlayerTwo);
   kristinaBtn.addEventListener('click',addPlayerTwo);
@@ -153,18 +168,104 @@ function afterStartGame(){
 function chooseRounds(){
   rulesGame.classList.add('displayNone');
   chooseRound.classList.remove('displayNone');
-}
-
-
-
+  submitBtn.addEventListener('click', formValidacija);
+  function formValidacija(e) {
+    e.preventDefault();
+    userRoundsVal = userRounds.value;
+    if (userRoundsVal === "1" || userRoundsVal === "2" || userRoundsVal === "3" || userRoundsVal === "4" || userRoundsVal === "5") {
+        showPlayers();
+      }else {
+        userRounds.style.border = "1px solid tomato";
+        textRound.innerHTML = 'Napisite broj od 1 do 5.';
+        }
+      }
+    }
 
 function showPlayers(){
   firstColumn.classList.remove('displayNone');
   lastColumn.classList.remove('displayNone');
   addFirstCol.className = 'displayNone col-4';
   createTablePlayer();
+  createTableList();
   firstPlayerBtn.addEventListener('click',displayDice);
   }
+
+function createTableList(){
+    userRoundsValNumber = parseInt(userRoundsVal);
+    textR = ' ';
+    textL = ' ';
+    if (userRoundsValNumber === 1) {
+      textR += '<ul class="list-group">';
+      textR += '<li id="oneRoundR" class="list-group-item">Runda 1</li>';
+      textR += '</ul>';
+      textL += '<ul class="list-group">';
+      textL += '<li id="oneRoundL" class="list-group-item">Runda 1</li>';
+      textL += '</ul>';
+    }else if (userRoundsValNumber === 2) {
+      textR += '<ul class="list-group">';
+      textR += '<li id="oneRoundR" class="list-group-item">Runda 1</li>';
+      textR += '<li id="twoRoundR" class="list-group-item">Runda 2</li>';
+      textR += '</ul>';
+      textL += '<ul class="list-group">';
+      textL += '<li id="oneRoundL" class="list-group-item">Runda 1</li>';
+      textL += '<li id="twoRoundL" class="list-group-item">Runda 2</li>';
+      textL += '</ul>';
+    }else if (userRoundsValNumber === 3) {
+      textR += '<ul class="list-group">';
+      textR += '<li id="oneRoundR" class="list-group-item">Runda 1</li>';
+      textR += '<li id="twoRoundR" class="list-group-item">Runda 2</li>';
+      textR += '<li id="threeRoundR" class="list-group-item">Runda 3</li>';
+      textR += '</ul>';
+      textL += '<ul class="list-group">';
+      textL += '<li id="oneRoundL" class="list-group-item">Runda 1</li>';
+      textL += '<li id="twoRoundL" class="list-group-item">Runda 2</li>';
+      textL += '<li id="threeRoundL" class="list-group-item">Runda 3</li>';
+      textL += '</ul>';
+    }else if (userRoundsValNumber === 4) {
+      textR += '<ul class="list-group">';
+      textR += '<li id="oneRoundR" class="list-group-item">Runda 1</li>';
+      textR += '<li id="twoRoundR" class="list-group-item">Runda 2</li>';
+      textR += '<li id="threeRoundR" class="list-group-item">Runda 3</li>';
+      textR += '<li id="fourRoundR" class="list-group-item">Runda 4</li>';
+      textR += '</ul>';
+      textL += '<ul class="list-group">';
+      textL += '<li id="oneRoundL" class="list-group-item">Runda 1</li>';
+      textL += '<li id="twoRoundL" class="list-group-item">Runda 2</li>';
+      textL += '<li id="threeRoundL" class="list-group-item">Runda 3</li>';
+      textL += '<li id="fourRoundL" class="list-group-item">Runda 4</li>';
+      textL += '</ul>';
+    }else if (userRoundsValNumber === 5) {
+      textR += '<ul class="list-group">';
+      textR += '<li id="oneRoundR" class="list-group-item">Runda 1</li>';
+      textR += '<li id="twoRoundR" class="list-group-item">Runda 2</li>';
+      textR += '<li id="threeRoundR" class="list-group-item">Runda 3</li>';
+      textR += '<li id="fourRoundR" class="list-group-item">Runda 4</li>';
+      textR += '<li id="fiveRoundR" class="list-group-item">Runda 5</li>';
+      textR += '</ul>';
+      textL += '<ul class="list-group">';
+      textL += '<li id="oneRoundL" class="list-group-item">Runda 1</li>';
+      textL += '<li id="twoRoundL" class="list-group-item">Runda 2</li>';
+      textL += '<li id="threeRoundL" class="list-group-item">Runda 3</li>';
+      textL += '<li id="fourRoundL" class="list-group-item">Runda 4</li>';
+      textL += '<li id="fiveRoundL" class="list-group-item">Runda 5</li>';
+      textL += '</ul>';
+    }
+
+    listR.innerHTML = textR;
+    listL.innerHTML = textL;
+    oneRoundL = document.querySelector('#oneRoundL');
+    twoRoundL = document.querySelector('#twoRoundL');
+    threeRoundL = document.querySelector('#threeRoundL');
+    fourRoundL = document.querySelector('#fourRoundL');
+    fiveRoundL = document.querySelector('#fiveRoundL');
+    oneRoundR = document.querySelector('#oneRoundR');
+    twoRoundR = document.querySelector('#twoRoundR');
+    threeRoundR = document.querySelector('#threeRoundR');
+    fourRoundR = document.querySelector('#fourRoundR');
+    fiveRoundR = document.querySelector('#fiveRoundR');
+    roundTableL = ["null", oneRoundL, twoRoundL, threeRoundL, fourRoundL, fiveRoundL];
+    roundTableR = ["null", oneRoundR, twoRoundR, threeRoundR, fourRoundR, fiveRoundR];
+}
 
 function displayDice(){
   oneCube.classList.remove('displayNone');
@@ -188,7 +289,7 @@ function rollDiceFirstPlayer(){
       oneCube.classList.add('borderCube');
       cubesDisplay[rand].classList.remove('displayNone');
       rand = rand + 1;
-      roundTableL[countRound].innerHTML = "Runda "+countRound+":  Poena "+rand;
+      roundTableL[countRound].innerHTML = "Runda "+countRound+":     Poena "+rand;
       counterPlayerOne = counterPlayerOne + rand;
       createTablePlayer();
       secondPlayerBtn.addEventListener('click',rollDiceSecondPlayer);
@@ -277,11 +378,12 @@ function rollDiceSecondPlayer(){
       counterCube = 0;
       cubesDisplay[rand].classList.remove('displayNone');
       rand = rand + 1;
-      roundTableR[countRound].innerHTML = "Runda "+countRound+":  Poena "+rand;
+      roundTableR[countRound].innerHTML = "Runda "+countRound+":    Poena "+rand;
       counterPlayerTwo = counterPlayerTwo + rand;
       oneCube.classList.add('borderCube');
       createTablePlayer();
-      if (countRound == 2) {
+      if (countRound == userRoundsValNumber) {
+        firstPlayerBtn.classList.add('displayNone');
         var temeEnd = setTimeout(function(){
           endGame();
         }, 2000);
@@ -293,6 +395,7 @@ function rollDiceSecondPlayer(){
 }
 
 function endGame(){
+  chooseRound.classList.add('displayNone');
   firstColumn.classList.add('displayNone');
   lastColumn.classList.add('displayNone');
   oneCube.classList.add('displayNone');
@@ -300,11 +403,10 @@ function endGame(){
   htag.classList.add('displayNone');
   rulesGame.classList.add('displayNone');
 
-  readHtml();
+  readWinnerText();
 }
 
-
-function readHtml(){
+function readWinnerText(){
   var players = ["Ivo", "Lav", "Kristina", "Justina", "Vladanka", "Jorge"]
   var text = '';
   endGames.classList.remove('displayNone');
@@ -340,7 +442,6 @@ function readHtml(){
     text +='<button id="restartButton" class="btn btn-danger">Pokreni ponovo igru</button>';
     text += '</div>'
   }
-
   endGames.innerHTML = text;
   restartButton = document.querySelector('#restartButton');
   restartButton.addEventListener('click',restartGame);
