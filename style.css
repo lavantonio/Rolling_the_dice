@@ -162,6 +162,9 @@
 .list-group-item{
   padding: 0 !important;
 }
-.borderCube{
-  border: 5px solid red;
+.borderCubeBlue{
+  border: 5px solid blue;
+}
+.borderCubeGreen{
+  border: 5px solid green;
 }

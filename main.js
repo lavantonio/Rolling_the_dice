@@ -75,6 +75,9 @@ var countRound = 0;
 var countPlayerDisplayNone = 0;
 var playerOne = " ";
 var playerTwo = " ";
+var timeDelay = 200;
+var borderColorLeft = " ";
+var borderColorRight = " ";
 
 var cubesDisplay = [oneCircle, twoCircle, threeCircle, fourCircle, fiveCircle, sixCircle];
 var roundTableL = [];
@@ -151,9 +154,10 @@ function addPlayerTwo(){
   }else{
     playerTwo = "Jorge";
   }
-  addPlayer.classList.add('displayNone');
-
-  afterStartGame();
+  var timeShowPlayers = setTimeout(function(){
+    addPlayer.classList.add('displayNone');
+    afterStartGame();
+  }, timeDelay);
 }
 
 function afterStartGame(){
@@ -168,16 +172,44 @@ function afterStartGame(){
 function chooseRounds(){
   rulesGame.classList.add('displayNone');
   chooseRound.classList.remove('displayNone');
+
+  userRounds.addEventListener("keyup", function(e) {
+  if (e.keyCode === 13) {
+   e.preventDefault();
+   userRoundsVal = userRounds.value;
+   if (userRoundsVal === "1" || userRoundsVal === "2" || userRoundsVal === "3" || userRoundsVal === "4" || userRoundsVal === "5") {
+     var timeShowPlayers = setTimeout(function(){
+       showPlayers();
+     }, timeDelay);
+     }else {
+       userRounds.style.border = "1px solid tomato";
+       textRound.innerHTML = 'Napisite broj od 1 do 5.';
+         }
+     }
+  });
   submitBtn.addEventListener('click', formValidacija);
   function formValidacija(e) {
     e.preventDefault();
     userRoundsVal = userRounds.value;
     if (userRoundsVal === "1" || userRoundsVal === "2" || userRoundsVal === "3" || userRoundsVal === "4" || userRoundsVal === "5") {
+      var timeShowPlayers = setTimeout(function(){
         showPlayers();
+      }, timeDelay);
       }else {
         userRounds.style.border = "1px solid tomato";
         textRound.innerHTML = 'Napisite broj od 1 do 5.';
-        }
+    }
+  }
+}
+
+function formValidacija(e) {
+  e.preventDefault();
+  userRoundsVal = userRounds.value;
+  if (userRoundsVal === "1" || userRoundsVal === "2" || userRoundsVal === "3" || userRoundsVal === "4" || userRoundsVal === "5") {
+      showPlayers();
+    }else {
+      userRounds.style.border = "1px solid tomato";
+      textRound.innerHTML = 'Napisite broj od 1 do 5.';
       }
     }
 
@@ -271,9 +303,8 @@ function displayDice(){
   oneCube.classList.remove('displayNone');
   rollDiceFirstPlayer();
 }
-
 function rollDiceFirstPlayer(){
-  oneCube.classList.remove('borderCube');
+  oneCube.classList.remove('borderCubeGreen');
   firstPlayerBtn.classList.add('displayNone');
   var timer = setTimeout(function myTimer() {
     var rand = Math.floor(Math.random()*6);
@@ -286,7 +317,8 @@ function rollDiceFirstPlayer(){
       counterTimeCube = 800;
       counterCube = 0;
       countRound++;
-      oneCube.classList.add('borderCube');
+      oneCube.classList.add('borderCubeBlue');
+      imgPlayerOne.classList.add('borderCubeBlue')
       cubesDisplay[rand].classList.remove('displayNone');
       rand = rand + 1;
       roundTableL[countRound].innerHTML = "Runda "+countRound+":     Poena "+rand;
@@ -327,17 +359,19 @@ function cubeChange(){
     }else{
       nonePlayer1Display = "displayNone";
       nonePlayer2Display = " "
-    }
+    };
+
+
 
     if (countRound != 0) {
       noneDisplay = ' ';
     } else {
       noneDisplay = 'displayNone';
-    }
+    };
     for (var i = 0; i < players.length; i++) {
       if (players[i] == playerOne) {
         textPlay1 +='<h2>'+players[i]+'</h2>';
-        textPlay1 +='<img src="img/'+players[i]+'.jpg" class="card-img-top" alt="'+players[i]+'">';
+        textPlay1 +='<img id="imgPlayerOne" src="img/'+players[i]+'.jpg" class="card-img-top borderCubeBlue" alt="'+players[i]+'">';
         textPlay1 +='<div class="card-body">';
         textPlay1 +='<p id="scorePlayerOne"class="lead">Ukupno poena : '+counterPlayerOne+'</p>';
         textPlay1 +='<p id = "countRounds" class = "'+noneDisplay+' pt-1">Runda '+countRound+'</p>';
@@ -346,11 +380,11 @@ function cubeChange(){
         }
       if (players[i] == playerTwo) {
         textPlay2 +='<h2>'+players[i]+'</h2>';
-        textPlay2 +='<img src="img/'+players[i]+'.jpg" class="card-img-top" alt="'+players[i]+'">';
+        textPlay2 +='<img id="imgPlayerTwo" src="img/'+players[i]+'.jpg" class="card-img-top borderCubeGreen" alt="'+players[i]+'">';
         textPlay2 +='<div class="card-body">';
         textPlay2 +='<p id="scorePlayerTwo" class="lead">Ukupno poena : '+counterPlayerTwo+'</p>';
         textPlay2 +='<p class = "'+noneDisplay+' pt-1">Runda '+countRound+'</p>';
-        textPlay2 +='<button id="secondPlayerBtn" class="'+nonePlayer2Display+' btn btn-primary">baci kockicu</button>';
+        textPlay2 +='<button id="secondPlayerBtn" class="'+nonePlayer2Display+' btn btn-success">baci kockicu</button>';
         textPlay2 +='</div>';
       }
       }
@@ -364,7 +398,7 @@ function cubeChange(){
     }
 
 function rollDiceSecondPlayer(){
-  oneCube.classList.remove('borderCube');
+  oneCube.classList.remove('borderCubeBlue');
   secondPlayerBtn.classList.add('displayNone');
   var timer = setTimeout(function myTimer() {
     var rand = Math.floor(Math.random()*6);
@@ -380,13 +414,14 @@ function rollDiceSecondPlayer(){
       rand = rand + 1;
       roundTableR[countRound].innerHTML = "Runda "+countRound+":    Poena "+rand;
       counterPlayerTwo = counterPlayerTwo + rand;
-      oneCube.classList.add('borderCube');
+      oneCube.classList.add('borderCubeGreen');
+      borderColorRight = "borderCubeGreen"
       createTablePlayer();
       if (countRound == userRoundsValNumber) {
         firstPlayerBtn.classList.add('displayNone');
-        var temeEnd = setTimeout(function(){
+        var timeEnd = setTimeout(function(){
           endGame();
-        }, 2000);
+        }, 1500);
       }
       firstPlayerBtn.addEventListener('click',rollDiceFirstPlayer);
       clearTimeout(timer);
