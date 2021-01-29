@@ -143,6 +143,7 @@ function addPlayerOne(){
 
 function addPlayerTwo(){
   if (this.id == "kristinaBtn") {
+    playerTwo = "Kristina";
   } else if (this.id == "lavBtn") {
     playerTwo = "Lav";
   }else if (this.id == "ivoBtn") {
@@ -360,9 +361,6 @@ function cubeChange(){
       nonePlayer1Display = "displayNone";
       nonePlayer2Display = " "
     };
-
-
-
     if (countRound != 0) {
       noneDisplay = ' ';
     } else {
@@ -484,5 +482,4 @@ function readWinnerText(){
 
 function restartGame(){
   location.reload();
-  startGame();
 }
