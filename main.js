@@ -455,7 +455,7 @@ function readWinnerText(){
   }
   if (counterPlayerTwo > counterPlayerOne) {
     text += '<div class="d-flex flex-column justify-content-center text-center">';
-    text += '<img src="img/'+playerTwo+'.jpg" alt="'+playerTwo+'">';
+    text += '<img src="./img/'+playerTwo+'.jpg" alt="'+playerTwo+'">';
     text += '<h4>***    '+playerTwo+' je pobedi'+textWoManPlayerTwo+'    ***</h4>';
     text += '<p class="align-justify">Osvoji'+textWoManPlayerTwo+' je ukupno '+counterPlayerTwo+' poena a protivnik je osvojio '+counterPlayerOne+' poena.</p>';
     text +='<button id="restartButton" class="btn btn-danger">Pokreni ponovo igru</button>';
