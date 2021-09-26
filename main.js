@@ -350,7 +350,7 @@ function cubeChange(){
 
   function createTablePlayer(){
     const players = ["Ivo", "Lav", "Kristina", "Justina", "Vladanka", "Jorge"];
-    const playersImg = ["ivo", "lav", "kristina", "justina", "vladanka", "jorge"]
+    const playersImg = ["ivo", "lav", "kristina", "justina", "vladanka", "jorge"];
     var textPlay1 = '';
     var textPlay2 = '';
     countPlayerDisplayNone++;
@@ -440,10 +440,19 @@ function endGame(){
   readWinnerText();
 }
 
+function lowerCaseOne (player) {
+  var res = player.toLowerCase();
+  return res
+}
+
+
+
 function readWinnerText(){
-  var players = ["Ivo", "Lav", "Kristina", "Justina", "Vladanka", "Jorge"]
+  const players = ["Ivo", "Lav", "Kristina", "Justina", "Vladanka", "Jorge"];
   var text = '';
   endGames.classList.remove('displayNone');
+  const imgPlayerOne = lowerCaseOne(playerOne);
+  const imgPlayerTwo = lowerCaseOne(playerTwo);
   if (playerOne == "Ivo"|| playerOne == "Lav" || playerOne == "Jorge") {
     var textWoManPlayerOne = "o";
   }else{
@@ -456,7 +465,7 @@ function readWinnerText(){
   }
   if (counterPlayerTwo > counterPlayerOne) {
     text += '<div class="d-flex flex-column justify-content-center text-center">';
-    text += '<img src="img/'+playerTwo+'.jpg" alt="'+playerTwo+'">';
+    text += '<img src="img/'+imgPlayerTwo+'.jpg" alt="'+playerTwo+'">';
     text += '<h4>***    '+playerTwo+' je pobedi'+textWoManPlayerTwo+'    ***</h4>';
     text += '<p class="align-justify">Osvoji'+textWoManPlayerTwo+' je ukupno '+counterPlayerTwo+' poena a protivnik je osvojio '+counterPlayerOne+' poena.</p>';
     text +='<button id="restartButton" class="btn btn-danger">Pokreni ponovo igru</button>';
@@ -470,7 +479,7 @@ function readWinnerText(){
     text += '</div>';
   }else {
     text += '<div class="d-flex flex-column justify-content-center text-center">';
-    text += '<img src="img/'+playerOne+'.jpg" alt="'+playerOne+'">';
+    text += '<img src="img/'+imgPlayerOne+'.jpg" alt="'+playerOne+'">';
     text += '<h4>***    '+playerOne+' je pobedi'+textWoManPlayerOne+'    ***</h4>';
     text += '<p class="align-justify">Osvoji'+textWoManPlayerOne+' je ukupno '+counterPlayerOne+' poena a protivnik je osvojio '+counterPlayerTwo+' poena.</p>';
     text +='<button id="restartButton" class="btn btn-danger">Pokreni ponovo igru</button>';
