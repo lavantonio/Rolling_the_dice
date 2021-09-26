@@ -349,7 +349,8 @@ function cubeChange(){
 }
 
   function createTablePlayer(){
-    var players = ["Ivo", "Lav", "Kristina", "Justina", "Vladanka", "Jorge"]
+    const players = ["Ivo", "Lav", "Kristina", "Justina", "Vladanka", "Jorge"];
+    const playersImg = ["ivo", "lav", "kristina", "justina", "vladanka", "jorge"]
     var textPlay1 = '';
     var textPlay2 = '';
     countPlayerDisplayNone++;
@@ -369,7 +370,7 @@ function cubeChange(){
     for (var i = 0; i < players.length; i++) {
       if (players[i] == playerOne) {
         textPlay1 +='<h2>'+players[i]+'</h2>';
-        textPlay1 +='<img id="imgPlayerOne" src="img/'+players[i]+'.jpg" class="card-img-top borderCubeBlue" alt="'+players[i]+'">';
+        textPlay1 +='<img id="imgPlayerOne" src="./img/'+playersImg[i]+'.jpg" class="card-img-top borderCubeBlue" alt="'+players[i]+'">';
         textPlay1 +='<div class="card-body">';
         textPlay1 +='<p id="scorePlayerOne"class="lead">Ukupno poena : '+counterPlayerOne+'</p>';
         textPlay1 +='<p id = "countRounds" class = "'+noneDisplay+' pt-1">Runda '+countRound+'</p>';
@@ -378,7 +379,7 @@ function cubeChange(){
         }
       if (players[i] == playerTwo) {
         textPlay2 +='<h2>'+players[i]+'</h2>';
-        textPlay2 +='<img id="imgPlayerTwo" src="img/'+players[i]+'.jpg" class="card-img-top borderCubeGreen" alt="'+players[i]+'">';
+        textPlay2 +='<img id="imgPlayerTwo" src="img/'+playersImg[i]+'.jpg" class="card-img-top borderCubeGreen" alt="'+players[i]+'">';
         textPlay2 +='<div class="card-body">';
         textPlay2 +='<p id="scorePlayerTwo" class="lead">Ukupno poena : '+counterPlayerTwo+'</p>';
         textPlay2 +='<p class = "'+noneDisplay+' pt-1">Runda '+countRound+'</p>';
@@ -455,7 +456,7 @@ function readWinnerText(){
   }
   if (counterPlayerTwo > counterPlayerOne) {
     text += '<div class="d-flex flex-column justify-content-center text-center">';
-    text += '<img src="./img/'+playerTwo+'.jpg" alt="'+playerTwo+'">';
+    text += '<img src="img/'+playerTwo+'.jpg" alt="'+playerTwo+'">';
     text += '<h4>***    '+playerTwo+' je pobedi'+textWoManPlayerTwo+'    ***</h4>';
     text += '<p class="align-justify">Osvoji'+textWoManPlayerTwo+' je ukupno '+counterPlayerTwo+' poena a protivnik je osvojio '+counterPlayerOne+' poena.</p>';
     text +='<button id="restartButton" class="btn btn-danger">Pokreni ponovo igru</button>';
